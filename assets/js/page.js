@@ -1,0 +1,137 @@
+window.onload = function () {
+  // 1
+  const gsapTimeline = gsap.timeline({ paused: !0 });
+  // 2
+  const intro = document.querySelector(".home_intro");
+  const videoBg = intro.querySelector(".video-background");
+  const introVideo = intro.querySelector(".intro");
+  const introLoop = intro.querySelector(".intro-loop");
+
+  // 3
+  const BigTitle = Array.from(intro.querySelectorAll(".title span"));
+  const titleWord1 = new SplitText(BigTitle[0], { type: "words" });
+  const titleWord2 = new SplitText(BigTitle[1], { type: "words" });
+  const subTitle = new SplitText(document.querySelectorAll(".baseline"), {
+    type: "words,chars",
+  });
+  // 4
+  introVideo.addEventListener("ended", function (t) {
+    introLoop.style.opacity = 1;
+    introLoop.style.zIndex = 2;
+    introLoop.play();
+  });
+
+  gsapTimeline.set(videoBg, { scale: 0.5, autoAlpha: 0 });
+
+  // 5
+  gsapTimeline
+    .to(
+      videoBg,
+      0.4,
+      {
+        scale: 1,
+        ease: Power1.easeIn,
+        onComplete: function () {
+          document.body.style.background = "#151515";
+        },
+      },
+      0.3
+    )
+    .to(videoBg, 0.2, { autoAlpha: 1 }, 0.3)
+    .to(".header", { autoAlpha: 1 }, "+=2")
+    .to(".baseline", { autoAlpha: 1 })
+
+    .fromTo(
+      ".left-title",
+      { duration: 1, autoAlpha: 0, ease: "bounce.out", top: 0 },
+      { duration: 1, autoAlpha: 1, ease: "bounce.out", top: "35%" }
+    )
+    .fromTo(
+      ".right-title",
+      { duration: 1, autoAlpha: 0, ease: "bounce.out", top: 0 },
+      { duration: 1, autoAlpha: 1, ease: "bounce.out", top: "46%" }
+    )
+    .fromTo(
+      ".icon-coin",
+      { autoAlpha: 0 },
+      {
+        autoAlpha: 1,
+        duration: 1,
+      }
+    )
+    // .fromTo(
+    //   ".cloud",
+    //   { autoAlpha: 0, top: "30%" },
+    //   {
+    //     autoAlpha: 1,
+    //     duration: 0.5,
+    //     top: "20%",
+    //   }
+    // )
+    .fromTo(
+      ".bird",
+      { autoAlpha: 0 },
+      {
+        autoAlpha: 1,
+        duration: 1,
+      }
+    );
+  // .to(".cloud", {
+  //   transformOrigin: "bottom center",
+  //   y: -15,
+  //   rotation: 1,
+  //   duration: 2,
+  //   ease: "sine.inOut",
+  //   yoyo: true,
+  //   repeat: -1,
+  // });
+
+  // 6
+  titleWord1.words.forEach(function (t, i) {
+    TweenLite.set(t, {
+      scale: 0.7,
+      transformOrigin: "50% 80%",
+      autoAlpha: 0,
+    });
+    gsapTimeline.to(t, 0, { autoAlpha: 1 }, 0.55 + 0.15 * i);
+    gsapTimeline.to(
+      t,
+      0.15,
+      { scale: 1, ease: Expo.easeInOut },
+      0.65 + 0.15 * i
+    );
+  });
+
+  titleWord2.words.forEach(function (t, i) {
+    TweenLite.set(t, {
+      scale: 0.7,
+      transformOrigin: "50% 80%",
+      autoAlpha: 0,
+    });
+    gsapTimeline.to(t, 0, { autoAlpha: 1 }, 2.98 + 0.15 * i);
+    gsapTimeline.to(
+      t,
+      0.15,
+      { scale: 1, ease: Expo.easeInOut },
+      3.08 + 0.15 * i
+    );
+  });
+
+  // 7
+  subTitle.words.forEach(function (t, i) {
+    TweenLite.set(t, { autoAlpha: 0 });
+    gsapTimeline.to(t, 0, { autoAlpha: 1 }, 2.98 + 0.7 + 0.09 * i);
+  });
+  // gsapTimeline.from(".home_titles .title span", { duration: 3, text: "" });
+  // gsapTimeline.from(".baseline", { duration: 3, text: "" });
+  // .to(".baseline", 0, { autoAlpha: 1 });
+
+  // introVideo.addEventListener("canplaythrough", function (t) {
+
+  // });
+  gsapTimeline.add(function () {
+    introVideo.play();
+  }, 0.3);
+  gsapTimeline.play();
+  
+};

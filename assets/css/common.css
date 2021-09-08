@@ -1,0 +1,111 @@
+.f {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.f--center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@font-face {
+  font-family: "Ionicons";
+  src: url("../fonts/ionicons.eot?v=2.0.1");
+  src: url("../fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"),
+    url("../fonts/ionicons.ttf?v=2.0.1") format("truetype"),
+    url("../fonts/ionicons.woff?v=2.0.1") format("woff"),
+    url("../fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");
+}
+@font-face {
+  font-family: "Helvetica";
+  src: url("../fonts/Helvetica.eot");
+  src: url("../fonts/Helvetica.woff") format("woff"),
+    url("../fonts/Helvetica.ttf") format("truetype"),
+    url("../fonts/Helvetica.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Bold";
+  src: url("f../../onts/Helvetica Bold.eot");
+  src: local("☺"), url("../fonts/Helvetica Bold.woff") format("woff"),
+    url("../fonts/Helvetica Bold.ttf") format("truetype"),
+    url("../fonts/Helvetica Bold.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica light";
+  src: url("../fonts/Helvetica light.eot");
+  src: local("☺"), url("../fonts/Helvetica light.woff") format("woff"),
+    url("../fonts/Helvetica light.ttf") format("truetype"),
+    url("../fonts/Helvetica light.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+body,
+html {
+  width: 100%;
+}
+body {
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.97222vw;
+  line-height: 1;
+  color: #f1f1f1;
+  background: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body.show-grid:after {
+  content: "";
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: calc(100% + 1px);
+  height: 100vh;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent calc(4.16667% - 1px),
+    rgba(255, 0, 0, 0.33) calc(4.16667% - 1px),
+    rgba(255, 0, 0, 0.33) 4.16667%
+  );
+  background-size: 100% 4.16667%;
+}
+.loading * {
+  cursor: progress !important;
+}
+
+.white-selection ::selection {
+  background-color: hsla(0, 0%, 100%, 0.99) !important;
+  color: #000;
+}
+.white-selection ::-moz-selection {
+  background-color: hsla(0, 0%, 100%, 0.99) !important;
+  color: #000;
+}
+.a,
+a,
+a:visited {
+  pointer-events: auto;
+  color: #fff;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
